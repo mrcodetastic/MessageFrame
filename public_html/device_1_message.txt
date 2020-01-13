@@ -1,0 +1,10 @@
+# Please note: The Arduino logic is not smart and will not wrap content, you
+# will need to provide you message exactly how you want it in 16 character lines.
+#
+# There must NOT be a new line between the MESSAGE tags and the
+# text you want displayed on the device
+
+<MESSAGE>This is line one
+!This is line 2!
+This is line 3
+Have a great day</MESSAGE>
