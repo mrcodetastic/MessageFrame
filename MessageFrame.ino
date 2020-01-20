@@ -195,7 +195,7 @@ void loop()
 
     case 1: // Show HOME location time
       Sprintln("Showing current HOME timezone time.");
-      snprintf(lcd_line1, LCD_NUM_COLUMNS, "Time in %s", display_name_home);
+      snprintf(lcd_line1, LCD_NUM_COLUMNS+1, "Time in %s", display_name_home);
       getFormattedTimeToCharBuffer(lcd_line2, (now() + tz_gmt_home_offset));
       printLCDbuffers();
       delay(display_change_frequency_ms);
@@ -204,7 +204,7 @@ void loop()
 
     case 2: // Show AWAY location time
       Sprintln("Showing current AWAY timezone time.");    
-      snprintf(lcd_line1, LCD_NUM_COLUMNS, "Time in %s", display_name_away);
+      snprintf(lcd_line1, LCD_NUM_COLUMNS+1, "Time in %s", display_name_away);
       getFormattedTimeToCharBuffer(lcd_line2, now() + tz_gmt_away_offset    );
       printLCDbuffers();
       delay(display_change_frequency_ms);
@@ -212,7 +212,7 @@ void loop()
       break;
 
     case 3: // Current Away Location Weather
-      snprintf(lcd_line1, LCD_NUM_COLUMNS, "%s weather", display_name_away);
+      snprintf(lcd_line1, LCD_NUM_COLUMNS+1, "%s weather", display_name_away);
       //strcat(lcd_line1, display_name_away);  strcat(lcd_line1, " weather:");
       current_weather.toCharArray(lcd_line2, 16);
       //strcat(lcd_line2,  "\0xDF !");
