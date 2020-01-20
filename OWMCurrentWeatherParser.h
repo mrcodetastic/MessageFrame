@@ -1,6 +1,7 @@
 #pragma once
 
 #include "JsonListener.h"
+#include "SerialDebug.h"
 
 // #define DEBUG_OUTPUT      // Debug output of our open weather map state machine
 // #define DEBUG_OUTPUT_JSON // If we want to see the debug output for the JSON tree / base parser

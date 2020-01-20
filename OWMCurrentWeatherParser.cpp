@@ -21,7 +21,7 @@ void OWMCurrentWeatherParser::setup()
 void OWMCurrentWeatherParser::whitespace(char c) {
 
 #ifdef DEBUG_OUTPUT_JSON
-  Serial.println("whitespace");
+  Sprintln("whitespace");
 #endif
 
 }
@@ -29,7 +29,7 @@ void OWMCurrentWeatherParser::whitespace(char c) {
 void OWMCurrentWeatherParser::startDocument() {
 
 #ifdef DEBUG_OUTPUT_JSON
-  Serial.println("start document");
+  Sprintln("start document");
 #endif
 
   /* Due to reading about Strings causing excessive fragmentation. Specifically:
@@ -44,7 +44,7 @@ void OWMCurrentWeatherParser::startDocument() {
   if (!started)
   {
     //setup();
-    Serial.println("Setup has not been called for this listener instance!");
+    Sprintln("Setup has not been called for this listener instance!");
   }
 }
 
@@ -52,7 +52,7 @@ void OWMCurrentWeatherParser::key(String key)
 {
 
 #ifdef DEBUG_OUTPUT_JSON
-  Serial.println("key: " + key);
+  Sprintln("key: " + key);
 #endif
 
   current_key = key;
@@ -100,7 +100,7 @@ void OWMCurrentWeatherParser::value(String value)
 
   
 #ifdef DEBUG_OUTPUT_JSON
-  Serial.println("value: " + value);
+  Sprintln("value: " + value);
 #endif
 
 }
@@ -108,7 +108,7 @@ void OWMCurrentWeatherParser::value(String value)
 void OWMCurrentWeatherParser::endArray() {
 
 #ifdef DEBUG_OUTPUT_JSON
-  Serial.println("end array. ");
+  Sprintln("end array. ");
 #endif
 
 }
@@ -116,7 +116,7 @@ void OWMCurrentWeatherParser::endArray() {
 void OWMCurrentWeatherParser::endObject() {
 
 #ifdef DEBUG_OUTPUT_JSON
-  Serial.println("end object. ");
+  Sprintln("end object. ");
 #endif
 
 }
@@ -124,7 +124,7 @@ void OWMCurrentWeatherParser::endObject() {
 void OWMCurrentWeatherParser::endDocument() {
 
 #ifdef DEBUG_OUTPUT_JSON
-  Serial.println("end document. ");
+  Sprintln("end document. ");
 #endif
 
 process();
@@ -134,7 +134,7 @@ process();
 void OWMCurrentWeatherParser::startArray() {
 
 #ifdef DEBUG_OUTPUT_JSON
-  Serial.println("start array. ");
+  Sprintln("start array. ");
 #endif
 
 }
@@ -142,18 +142,18 @@ void OWMCurrentWeatherParser::startArray() {
 void OWMCurrentWeatherParser::startObject() {
 
 #ifdef DEBUG_OUTPUT_JSON
-  Serial.println("start object. ");
+  Sprintln("start object. ");
 #endif
 
 }
 
 void OWMCurrentWeatherParser::process()
 {
-  Serial.println("Processing current weather...  ");
+  Sprintln("Processing current weather...  ");
   
   if (tmp_server_response_ok == false )
   {
-    Serial.println("No weather to process.");
+    Sprintln("No weather to process.");
     //strcpy(char_str_buffer_pointer, "No Weather!");
 	  return;
   }
@@ -168,8 +168,8 @@ void OWMCurrentWeatherParser::process()
   //tmp_result_string.toCharArray(char_str_buffer_pointer, char_str_max_length);
   //sprintf(curWeatherMessage, "Current Weather for %s \x10 %s, %d\xF7, %d%% humidity.", cityname,  weather0_main, main_temp, main_humidity);
   
-  Serial.print("Setting current weather to: ");
-  Serial.println(tmp_result_string);
+  Sprint("Setting current weather to: ");
+  Sprintln(tmp_result_string);
   
 } // end process forecast
 
@@ -177,8 +177,8 @@ void OWMCurrentWeatherParser::process()
 String OWMCurrentWeatherParser::getCurrentWeatherString()
 {
 
-  Serial.print("Returning current weather: ");
-  Serial.println(tmp_result_string);
+  Sprint("Returning current weather: ");
+  Sprintln(tmp_result_string);
     
   return tmp_result_string;
   
